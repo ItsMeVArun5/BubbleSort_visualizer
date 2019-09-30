@@ -17,19 +17,22 @@ class BubbleSortVisualizer extends PApplet{
 	}
 	
 	public void draw(){
-        frameRate(10);
+        frameRate(7);
         background(255);
         createBars();
-
-        drawBars(bars[j], 50+j*15, 251, 0, 0);
-        drawBars(bars[j+1], 50+(j+1)*15, 0, 250, 0);
+        
 
         if (bars[j] > bars[j+1]){
-            drawBars(bars[j], 50+j*15, 251, 0, 0);
-            drawBars(bars[j+1], 50+(j+1)*15, 0, 250, 0);
             temp = bars[j];
             bars[j] = bars[j+1];
+            createBars();
+            drawBars(bars[j], 50+j*15, 0, 255, 0);
             bars[j+1] = temp;
+            drawBars(bars[j+1], 50+(j+1)*15, 255, 0, 0);
+        }
+        else{
+            drawBars(bars[j], 50+j*15, 251, 0, 0);
+            drawBars(bars[j+1], 50+(j+1)*15, 0, 250, 0);   
         }
 
         j++;
@@ -47,6 +50,7 @@ class BubbleSortVisualizer extends PApplet{
     }
 
     public void createBars(){
+        background(255);
         for (int i=0; i<size; i++){
             drawBars(bars[i], 50+i*15, 51, 0, 0);
         }
